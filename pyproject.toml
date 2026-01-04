@@ -1,0 +1,79 @@
+[project]
+name = "platzi-news"
+version = "0.1.0"
+description = "CLI app to search news from Guardian and NewsAPI, and analyze with OpenAI"
+readme = "README.md"
+requires-python = ">=3.13"
+authors = [
+    {name = "Luis Martinez", email = "lcmartinezl05@gmail.com"},
+]
+dependencies = [
+    "requests>=2.31.0",
+    "python-dotenv>=1.0.0",
+    "openai>=1.0.0",
+    "rich>=13.0.0",
+    "pydantic>=2.10.6",
+    "pydantic-settings>=2.8.1",
+    "types-requests>=2.32.4.20250913",
+]
+
+[project.scripts]
+platzi-news = "platzi_news.main:main"
+
+[dependency-groups]
+dev = [
+    "lxml>=6.0.2",
+    "mypy>=1.19.1",
+    "pre-commit>=4.5.1",
+    "pytest>=9.0.2",
+    "pytest-cov>=7.0.0",
+    "ruff>=0.14.10",
+]
+
+
+[tool.ruff]
+line-length = 120
+extend-exclude = [
+    "src/platzi_news/do_not_format"
+]
+
+[tool.mypy]
+python_version = "3.13"
+check_untyped_defs = true
+no_implicit_optional = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+disallow_untyped_decorators = true
+warn_unused_ignores = true
+warn_no_return = true
+warn_return_any = true
+warn_unused_configs = true
+warn_unreachable = true
+strict_equality = true
+
+[tool.ruff.lint]
+select = [
+    # pycodestyle
+    "E",
+    # Pyflakes
+    "F",
+    # pyupgrade
+    "UP",
+    # flake8-bugbear
+    "B",
+    # flake8-simplify
+    "SIM",
+    # isort
+    "I",
+    # flake8-bandit
+    "S",
+]
+
+[tool.pytest.ini_options]
+testpaths = [
+    "tests"
+]
+python_files = "test_*.py"
+pythonpath = [
+    "src"
+]
