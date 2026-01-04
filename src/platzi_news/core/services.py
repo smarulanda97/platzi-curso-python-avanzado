@@ -1,5 +1,7 @@
 """Service layer for news operations."""
 
+from platzi_news.sources import NewsSource
+
 from ..analysis.analyzer import get_analyzer
 from ..sources.guardian import GuardianAPI
 from ..sources.newsapi import NewsAPI
@@ -22,7 +24,7 @@ class NewsService:
         }
         self.analyzer = get_analyzer()
 
-    def get_source(self, source_name):
+    def get_source(self, source_name: str) -> "GuardianAPI|NewsAPI|NewsSource":
         """Get a news source by name.
 
         Args:

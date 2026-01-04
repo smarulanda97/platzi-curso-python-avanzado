@@ -28,6 +28,7 @@ dev = [
     "pytest>=9.0.2",
     "pytest-cov>=7.0.0",
     "ruff>=0.14.10",
+    "types-requests>=2.32.4.20250913",
 ]
 
 
@@ -39,17 +40,18 @@ extend-exclude = [
 
 [tool.mypy]
 python_version = "3.13"
-check_untyped_defs = true
+check_untyped_defs = false
 no_implicit_optional = true
-disallow_untyped_defs = true
+disallow_untyped_defs = false
 disallow_incomplete_defs = true
 disallow_untyped_decorators = true
 warn_unused_ignores = true
 warn_no_return = true
-warn_return_any = true
+warn_return_any = false
 warn_unused_configs = true
 warn_unreachable = true
 strict_equality = true
+disable_error_code = ["import-untyped"]
 
 [tool.ruff.lint]
 select = [

@@ -29,7 +29,7 @@ class Settings(BaseSettings):
 
 # Global settings instance with validation
 try:
-    settings = Settings()  # type: ignore[call-arg]
+    settings = Settings()
 except ValidationError as e:
     missing_keys = [str(err["loc"][0]) for err in e.errors() if err["type"] == "missing"]
     if missing_keys:
